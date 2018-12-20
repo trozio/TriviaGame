@@ -85,6 +85,7 @@ setTimeout(function(){
 	alert("Out of time!The correct answer was: " + correctOption);
 	time--;
 	$("#time").html("Time Left: " + time);
+	console.log(time);
 	newQuestion();
 }, 10000);
 }
