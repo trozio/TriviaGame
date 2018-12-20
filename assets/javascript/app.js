@@ -66,7 +66,8 @@ function newQuestion() {
 	question.options.forEach(function(option) {
 		$(".answers").append($("<div class=option>").html(option));
 	});
-	$("time").html("Time Left" + time);
+	$("#time").html("Time Left: " + time);
+	timer();
 	$(".option").on("click", function() {
 		let answer = $(this).html();
 		if (question.options.indexOf(answer) == question.correctOption) {
@@ -78,4 +79,12 @@ function newQuestion() {
 			newQuestion();
 		}
 	});
+}
+function timer(){
+setTimeout(function(){
+	alert("Out of time!The correct answer was: " + correctOption);
+	time--;
+	$("#time").html("Time Left: " + time);
+	newQuestion();
+}, 10000);
 }
