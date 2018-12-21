@@ -1,4 +1,4 @@
-let time = 10;
+let time = 11;
 let questions = [
 	{
 		question: "What day is Christmas?",
@@ -55,37 +55,41 @@ let questions = [
 
 
 let question = {};
-
 newQuestion();
-console.log()
+timer1();
 
 function newQuestion() {
 	question = questions[(Math.floor(Math.random() * 10) + 1) - 1];
 	$("#question").html(question.question);
 	$(".answers").html("");
+
+
 	question.options.forEach(function(option) {
 		$(".answers").append($("<div class=option>").html(option));
 	});
-	$("#time").html("Time Left: " + time);
-	timer();
+
 	$(".option").on("click", function() {
 		let answer = $(this).html();
 		if (question.options.indexOf(answer) == question.correctOption) {
 			alert("Correct!");
+			time = 11;
 			newQuestion();
 		}
 		else{
 			alert("Wrong");
+			time = 11;
 			newQuestion();
 		}
 	});
 }
-function timer(){
-setTimeout(function(){
-	alert("Out of time!The correct answer was: " + correctOption);
+function timer1(){
+timer = setInterval(function(){
 	time--;
 	$("#time").html("Time Left: " + time);
-	console.log(time);
-	newQuestion();
-}, 10000);
+	if(time === 0){
+		alert("Out of time! The correct answer was: " + question.options[question.correctOption]);
+		time = 11;
+		newQuestion();
+	}
+	}, 1000);
 }
