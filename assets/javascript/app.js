@@ -1,9 +1,11 @@
 let time = 11;
+let right = 0;
+let wrong = 0;
 let questions = [
 	{
 		question: "What day is Christmas?",
 		options: ["October 31st", "July 4th", "December 25th", "December 31st"],
-		correctOption: "December 25th"
+		correctOption: 2
 	},
 	{
 		question: "How many reindeer does Santa have?",
@@ -62,6 +64,8 @@ function newQuestion() {
 	question = questions[(Math.floor(Math.random() * 10) + 1) - 1];
 	$("#question").html(question.question);
 	$(".answers").html("");
+	$(".right").html("Correct: " + right);
+	$(".wrong").html("Missed: " + wrong);
 
 
 	question.options.forEach(function(option) {
@@ -73,11 +77,13 @@ function newQuestion() {
 		if (question.options.indexOf(answer) == question.correctOption) {
 			alert("Correct!");
 			time = 11;
+			right++;
 			newQuestion();
 		}
 		else{
-			alert("Wrong");
+			alert("Wrong!");
 			time = 11;
+			wrong++;
 			newQuestion();
 		}
 	});
@@ -89,6 +95,7 @@ timer = setInterval(function(){
 	if(time === 0){
 		alert("Out of time! The correct answer was: " + question.options[question.correctOption]);
 		time = 11;
+		wrong++;
 		newQuestion();
 	}
 	}, 1000);

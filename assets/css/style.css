@@ -4,9 +4,9 @@ h1{
 	color: red;
 	font-size: 42px;
 }
-#time, #question, .option{
+#time, #question, .right, .wrong, .option{
 	font-size: 24px;
 	text-align: center;
-	color: black;
+	color: Red;
 	font-family: 'Indie Flower', cursive;
 }
