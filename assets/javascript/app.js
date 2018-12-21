@@ -1,6 +1,7 @@
 let time = 11;
 let right = 0;
 let wrong = 0;
+let i = 0;
 let questions = [
 	{
 		question: "What day is Christmas?",
@@ -51,6 +52,10 @@ let questions = [
 		question: "What country started the tradition of exchanging gifts?",
 		options: ["Turkey", "Italy", "Greece", "Spain"],
 		correctOption: 1
+	},
+	{
+		question: "GAME OVER",
+
 	}
 
 ];
@@ -60,14 +65,15 @@ let question = {};
 newQuestion();
 timer1();
 
+
 function newQuestion() {
-	question = questions[(Math.floor(Math.random() * 10) + 1) - 1];
+	question = questions[i];
 	$("#question").html(question.question);
 	$(".answers").html("");
 	$(".right").html("Correct: " + right);
 	$(".wrong").html("Missed: " + wrong);
 
-
+console.log(i);
 	question.options.forEach(function(option) {
 		$(".answers").append($("<div class=option>").html(option));
 	});
@@ -78,25 +84,46 @@ function newQuestion() {
 			alert("Correct!");
 			time = 11;
 			right++;
+			i++;
 			newQuestion();
 		}
 		else{
 			alert("Wrong!");
 			time = 11;
 			wrong++;
+			i++;
 			newQuestion();
 		}
+
+
 	});
 }
 function timer1(){
-timer = setInterval(function(){
+let timer = setInterval(function(){
 	time--;
 	$("#time").html("Time Left: " + time);
 	if(time === 0){
 		alert("Out of time! The correct answer was: " + question.options[question.correctOption]);
 		time = 11;
 		wrong++;
+		i++;
 		newQuestion();
+	}
+	if(i === 10){
+		$(".restart").html("RESTART");
+		$(".restart").on("click", function() {
+			$(".restart").empty();
+			wrong = 0;
+			right = 0;
+			i = 0;
+			time = 11;
+			timer1();
+			newQuestion();
+
+		})
+		time = 0;
+		clearInterval(timer);
+
 	}
 	}, 1000);
 }
