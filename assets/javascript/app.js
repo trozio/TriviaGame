@@ -11,7 +11,7 @@ let questions = [
 	},
 	{
 		question: "How many reindeer does Santa have?",
-		options: [1, 6, 4, 9],
+		options: ["1", "6", "4", "9"],
 		correctOption: 3
 	},
 	{
@@ -46,7 +46,7 @@ let questions = [
 	},
 	{
 		question: "How many pipers piping did my true love give to me?",
-		options: [5, 7, 9, 11],
+		options: ["5", "7", "9", "11"],
 		correctOption: 3
 	},
 	{
