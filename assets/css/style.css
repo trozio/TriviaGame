@@ -4,9 +4,22 @@ h1{
 	color: red;
 	font-size: 42px;
 }
-#time, #question, .right, .wrong, .option{
-	font-size: 24px;
+#time, #question, .option{
+	font-size: 40px;
 	text-align: center;
-	color: Red;
+	color: #800020;
+	font-family: 'Indie Flower', cursive;
+}
+.right, .wrong{
+	font-size: 30px;
+	color: #800020;
+	font-family: 'Indie Flower', cursive;
+	margin: 30px 800px;
+}
+
+.start, .restart{
+	font-size: 40px;
+	text-align: center;
+	color: #800020;
 	font-family: 'Indie Flower', cursive;
 }

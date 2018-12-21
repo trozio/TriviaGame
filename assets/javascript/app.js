@@ -2,6 +2,7 @@ let time = 11;
 let right = 0;
 let wrong = 0;
 let i = 0;
+let question = {};
 let questions = [
 	{
 		question: "What day is Christmas?",
@@ -61,10 +62,13 @@ let questions = [
 ];
 
 
-let question = {};
+
+$(".start").html("START");
+$(".start").on("click", function() {
+	$(".start").empty();
 newQuestion();
 timer1();
-
+});
 
 function newQuestion() {
 	question = questions[i];
@@ -88,7 +92,7 @@ console.log(i);
 			newQuestion();
 		}
 		else{
-			alert("Wrong!");
+			alert("Wrong! The correct answer was: " + question.options[question.correctOption]);
 			time = 11;
 			wrong++;
 			i++;
