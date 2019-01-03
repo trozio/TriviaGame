@@ -106,11 +106,13 @@ function timer1(){
 let timer = setInterval(function(){
 	time--;
 	$("#time").html("Time Left: " + time);
+	console.log(time);
 	if(time === 0){
 		alert("Out of time! The correct answer was: " + question.options[question.correctOption]);
 		time = 11;
 		wrong++;
 		i++;
+
 		newQuestion();
 	}
 	if(i === 10){
